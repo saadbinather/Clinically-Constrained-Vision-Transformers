@@ -1,36 +1,46 @@
-# CV-CNN-diary
+# Computer Vision & Medical Imaging
 
-## Project Overview
+This repository shows my progression from learning Computer Vision and CNN fundamentals to working on medical-imaging research.
 
-The CV-CNN-diary project focuses on understanding and implementing Convolutional Neural Networks (CNNs) within the realm of Computer Vision (CV). This project serves as a practical diary documenting various experiments, implementations, and findings associated with CNNs applied to different computer vision tasks.
+I first practiced image classification and segmentation. After building these foundations, I worked on chest X-ray experiments and developed a research project on Clinical Attention Consistency Regularization (CACR).
 
-## Purpose
+## Structure
 
-The objective of this project is to provide a comprehensive resource for researchers, practitioners, and students interested in the application of CNNs for image classification, object detection, and other computer vision challenges. By documenting the entire journey—from problem formulation to solution implementation—this diary aims to facilitate knowledge sharing and provide a structured approach towards learning CNN techniques.
+### `learning_CV/`
 
-## Notebooks
+- `ANN_on_MNIST.ipynb` — handwritten-digit classification with an artificial neural network.
+- `CV.ipynb` — DenseNet121 chest X-ray pneumonia classification and Oxford-IIIT Pet exploration.
+- `Segmentation.ipynb` — U-Net with a ResNet34 encoder, masks, preprocessing, and DataLoaders.
 
-The project contains several Jupyter notebooks, each dedicated to specific tasks and experiments, including but not limited to:
-- **Basic CNN Architectures:** Implementation of fundamental CNN architectures such as LeNet, AlexNet, and VGG, with explanations on their structure and functionality.
-- **Transfer Learning:** Utilizing pre-trained models to solve new tasks efficiently and effectively, providing insights into the transfer learning process.
-- **Data Augmentation Techniques:** Exploring various data augmentation strategies to improve the generalization of CNN models.
-- **Performance Evaluation Metrics:** Comprehensive analysis of the performance metrics used to evaluate the effectiveness of different models.
+These are learning exercises, not original research.
 
-Each notebook includes rich documentation, code explanations, and visualizations to ensure clarity and understanding of the concepts presented.
+### `CACR/`
 
-## Getting Started
+- `experiments.ipynb` — NIH ChestX-ray14, CheXpert, and RSNA experiments.
+- `src/` — research source files.
+- `results/` — experiment results and reports.
 
-To clone the repository and start experimenting with the notebooks, use the following command:
+The project studies whether lesion-aware attention regularization can improve cross-domain chest X-ray diagnosis.
+
+### `jhu_starter_task/`
+
+A professor-provided starter task using MONAI and SuPreM for 3-D vertebrae segmentation from abdominal CT scans.
+
+## Selected results
+
+- DenseNet121 chest X-ray classification: **72.92% test accuracy** in the learning notebook.
+- NIH subset: **5,412 images** — 1,353 pneumonia and 4,059 normal cases.
+- CheXpert subset: **9,675 frontal images** — 4,675 pneumonia and 5,000 normal/other cases.
+- RSNA subset: **13,012 unique patients** — 6,012 pneumonia and 7,000 normal patients.
+- One recorded NIH-to-CheXpert baseline evaluation reports **AUROC 0.5426**.
+- The CACR paper reports an AUROC change from **0.5369 to 0.6283 at λ = 0.5**. This is paper-reported and is not claimed as independently reproduced here.
+
+## Reproducibility
+
+The notebooks use Kaggle datasets, external medical-imaging data, pretrained models, and GPU/Colab paths. Datasets, credentials, and model weights are not included.
+
 ```bash
-git clone https://github.com/saadbinather/CV-CNN-diary.git
+pip install -r requirements.txt
 ```
 
-Happy Exploring! 
-
-### Contributing
-
-Contributions to improve this project in terms of code, documentation, or new ideas are welcome! Please feel free to open issues or submit pull requests.
-
-### License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+The notebooks are research records and may require path and environment updates before execution.
