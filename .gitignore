@@ -20,4 +20,6 @@ rsna_data/
 
 # Local credentials and logs
 .kaggle/
+kaggle.json
+**/kaggle.json
 *.log
