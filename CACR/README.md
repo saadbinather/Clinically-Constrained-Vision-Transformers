@@ -1,32 +1,13 @@
-# Clinical Attention Consistency Regularization
+# Modular chest X-ray experiments
 
-This folder contains my medical-imaging research experiments on cross-domain chest X-ray diagnosis.
+This project reproduces the notebook's sampling, preprocessing, architectures, hyperparameters, and seed-42 80/20 splits. It supports Apple Silicon MPS automatically and falls back to CPU.
 
-## Main idea
+Install with `python3 -m pip install -r requirements.txt`, place the three notebook datasets under `nih_data/`, `chexpert_data/`, and `rsna_data/`, then run:
 
-The project uses a Vision Transformer and RSNA pneumonia bounding-box annotations to encourage the model to focus on clinically relevant regions. The model is evaluated across NIH ChestX-ray14 and CheXpert.
-
-## Files
-
-- `experiments.ipynb` — dataset preparation, model training, attention analysis, ablations, and evaluation.
-- `src/` — source-code space for cleaned research code.
-- `results/` — results and experiment outputs.
-
-## Recorded results
-
-- NIH subset: 5,412 images.
-- CheXpert subset: 9,675 frontal images.
-- RSNA subset: 13,012 unique patients with pneumonia bounding-box annotations.
-- A recorded NIH-to-CheXpert baseline evaluation reports AUROC **0.5426**.
-- The paper reports improvement from **0.5369 to 0.6283 AUROC at λ = 0.5**. This is paper-reported, not independently reproduced here.
-
-## Method
-
-The notebook uses:
-
-```text
-total loss = classification loss + λ × attention loss
-attention loss = 1 − AMIL
+```bash
+python3 train.py --data-root . --out runs
 ```
 
-It evaluates AUROC, accuracy, sensitivity, specificity, F1, ECE, AMIL, and IoU. The notebook requires external datasets, pretrained weights, and a GPU-capable environment.
+Run one configuration with `--only nih_densenet121`. Each run saves `config.json`, split manifests, `training_log.json`, and `best.pth`; `runs/results.csv` is the consolidated report.
+
+Protocol warning: the notebook uses the same 20% holdout for checkpoint selection and final reporting (NIH calls it `nih_test_loader`, CheXpert calls it `chex_test_loader`). This implementation preserves that behavior and labels the result accordingly; it is not an uncontaminated test evaluation. The notebook's original NIH `sample(n=10000)` is overwritten later by the full pneumonia/3x-negative construction, so this implementation preserves the effective final dataset.

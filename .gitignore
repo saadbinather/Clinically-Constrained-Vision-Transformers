@@ -1,0 +1,23 @@
+# Local Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Experiment outputs and checkpoints
+runs/
+*.pth
+*.pt
+*.ckpt
+
+# Downloaded datasets and archives (never commit medical images)
+nih_data/
+chexpert_data/
+rsna_data/
+*.zip
+*.tar
+*.tar.gz
+
+# Local credentials and logs
+.kaggle/
+*.log
