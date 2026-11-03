@@ -1,0 +1,7 @@
+model,trained_on,tested_on,checkpoint,test_split,auroc
+resnet50,nih,chexpert,runs/nih_resnet50/best.pth,notebook_seed42_stratified_20pct,0.5466534759358289
+resnet50,chexpert,nih,runs/chexpert_resnet50/best.pth,notebook_seed42_stratified_20pct,0.6473424463308672
+vit_base_patch16_224,nih,chexpert,runs/nih_vit_base/best.pth,notebook_seed42_stratified_20pct,0.6115529411764706
+vit_base_patch16_224,chexpert,nih,runs/chexpert_vit_base/best.pth,notebook_seed42_stratified_20pct,0.6633568429280352
+densenet121,nih,chexpert,runs/nih_densenet121/best.pth,notebook_seed42_stratified_20pct,0.5754983957219252
+densenet121,chexpert,nih,runs/chexpert_densenet121/best.pth,notebook_seed42_stratified_20pct,0.6277834330067438
